@@ -1,3 +1,5 @@
+# simulations of p, u, and v from the URP model
+
 import time
 import random
 import math
@@ -12,20 +14,6 @@ def main():
     print( utest(n) )
     print("v value after " + str(n) + " trials:")
     print( vtest(n) )
-
-    '''
-    count = 0
-    for i in range(n):
-        point = generate_coords()
-        vertices = []
-        for i in range(4):
-            vertices.append(generate_coords())
-        if (is_inside(point, vertices)):
-            count += 1
-
-    print("Average of convex after {} runs".format(n))
-    print(count / n)
-    '''
 
 
 
@@ -116,11 +104,6 @@ def ptest(n):
         q_one = generate_coords()
         q_two = generate_coords()
 
-        '''
-        result = find_intersection(p_one, p_two, q_one, q_two)
-        if (is_intersecting(result)):
-            crossings += 1
-        '''
 
         epsilon_one = epsilon(p_one, p_two, q_one, q_two)
         crossings += epsilon_one * epsilon_one
@@ -134,13 +117,6 @@ def ptest(n):
             positive += 1
         elif (epsilon_one == -1):
             negative += 1
-
-    '''
-    print("Number of positives:")
-    print(positive)
-    print("Number of negatives:")
-    print(negative)
-    '''
 
     print("Average distance of l_1")
     print(length / n)
@@ -181,18 +157,6 @@ def utest(n):
 
         if (i % 10_000 == 0) and (i != 0):
             print("u value after {} trials:".format(i), partial_sum / i)
-
-    #total_non_zero = positive + negative
-
-    #print("Number of non-zero over total")
-    #print(total_non_zero / n)
-
-    #print("Number of positives:")
-    #print(positive)
-    #print(positive / total_non_zero)
-    #print("Number of negatives:")
-    #print(negative)
-    #print(negative / total_non_zero)
     
 
     return (partial_sum / n)

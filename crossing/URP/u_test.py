@@ -1,5 +1,7 @@
-from test_crossings import *
-from test_convex import *
+# test for just the u case
+
+from URP.test_crossings import *
+from URP.test_convex import *
 
 def main():
     n = 1_000_000_000

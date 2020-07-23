@@ -1,3 +1,5 @@
+# debugger tool for general_book_sim.py
+
 import general_book_sim as gb
 
 def main():

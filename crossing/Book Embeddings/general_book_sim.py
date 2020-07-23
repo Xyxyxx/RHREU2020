@@ -1,3 +1,6 @@
+# simulates greedy book embeddings of K_n
+# seems to show that the number of sheets grows O(n)!
+
 import time
 import random
 import math
@@ -10,9 +13,6 @@ def main():
     tic = time.perf_counter()
     #n = trials
     n = 100_000
-    #n = 1
-
-    #n = 2
 
     total_sheets = 0
 
@@ -21,18 +21,14 @@ def main():
     k = 15  
 
     edges = create_edges(k)
-    #print(edges)
 
     for i in range(n):
         sheets = general_book_embeddings(edges, k)
         total_sheets += len(sheets)
 
-        #print(total_sheets)
-
         if (i % 10000 == 0) and (i != 0):
             print("total sheets:", total_sheets, "\ntrials:", i)
             print("average # sheets after", i, "trials:", total_sheets / i)
-            #print(total_sheets)
 
     print("the average number of sheets in the random process is:", total_sheets / n)
 
@@ -44,8 +40,6 @@ def general_book_embeddings(edges, k):
     # since python is Pepega, I have to actually do this
     local_edges = deepcopy(edges)
 
-    #print(local_edges)
-
     sheets = [[]]
     
     num_edges = len(edges)
@@ -54,7 +48,6 @@ def general_book_embeddings(edges, k):
     for i in range(num_edges):
         # we first generate a random edge
         n = random.randint(0, numbered_edges - i) 
-        #print(edges)
         edge = local_edges.pop(n)
 
         can_place = True
@@ -64,9 +57,7 @@ def general_book_embeddings(edges, k):
         for sheet in sheets:
             if (len(sheet) == 0):
                 # if the sheet is empty, then we can place the sheet inside
-                #print(sheet, "should be empty")
                 sheet.append(edge)
-                #print(sheet, "good placement")
             else:
                 can_place = True
                 # next check if there is an intersection in the sheet
@@ -74,17 +65,12 @@ def general_book_embeddings(edges, k):
                 for e in sheet:
                     if (general_intersection(e, edge, k) == False):
                         can_place = False
-                        #print("intersection found between", edge, "and", e, "in", sheet)
                         break
                 if (can_place):
                     sheet.append(edge)
-                    #print(sheet, "good placement")
-                    #print(sheets)
                     break
         if not (can_place):
             sheets.append([edge])
-            #print(sheet)
-            #print(sheets, "appended to intersecting sheet")
     return sheets
 
 
@@ -130,8 +116,6 @@ def create_edges(n):
             continue
         else:
             possible_edges.append(edge)
-            #print(edge, "new edge added")
-            #print(possible_edges, "edge list")
 
     return possible_edges
 

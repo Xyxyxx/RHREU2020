@@ -1,3 +1,5 @@
+# first attempt at simulating URP crossings
+
 import time
 import random
 import math
@@ -29,12 +31,10 @@ def main():
           # calculate crossing with p line as over
           over = tuple(numpy.subtract(p_one, p_two))
           under = tuple(numpy.subtract(q_one, q_two))
-          #print("p over")
         elif (over_cross == 2):
           # calculate crossing with q line as over
           over = tuple(numpy.subtract(q_one, q_two))
           under = tuple(numpy.subtract(p_one, p_two))
-          #print("q over")
         else:
           # this should never happen
           over = (0,0)
@@ -42,8 +42,6 @@ def main():
           print("Error, bad crossing")
         # then need to find crossing
         crossing = find_crossing(over, under)
-
-        #print(crossing)
 
         crossings += 1
 

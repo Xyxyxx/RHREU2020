@@ -1,3 +1,6 @@
+# this program is how we generated all the edges of K_6 
+# so we did not have to create them every time we ran the program
+
 import math
 import random
 

@@ -1,44 +1,41 @@
-def check_crossings_case3(sheets): #**
+# Includes functions which checks the crossings of edges in 
+# book embeddings of K_6.
+
+def check_crossings_case3(sheets): 
     crossing = 0
     # check (0,2) and (1,5)
     if (find_over({0, 2}, {1, 5}, sheets) == {0, 2}):
         crossing += 1
-    #elif (find_over({0, 2}, {1, 5}, sheets) == {1, 5}):
     else:
         crossing -= 1
 
     # check {0, 2} and {1, 3}
     if (find_over({0, 2}, {1, 3}, sheets) == {0, 2}):
         crossing -= 1
-    #elif (find_over({0, 2}, {1, 3}, sheets) == {1, 3}):
     else:
         crossing += 1
 
     # check {0, 4} and {1，5}
     if (find_over({0, 4}, {1, 5}, sheets) == {0, 4}):
         crossing -= 1
-    #elif (find_over({0, 4}, {1, 5}, sheets) == {1, 5}):
     else:
         crossing += 1
 
     # check {0, 4} and {3, 5}
     if (find_over({0, 4}, {3, 5}, sheets) == {0, 4}):
         crossing += 1
-    #elif (find_over({0, 4}, {3, 5}, sheets) == {3, 5}):
     else:
         crossing -= 1
 
     # check {4, 2} and {1，3}
     if (find_over({2, 4}, {1, 3}, sheets) == {2, 4}):
         crossing += 1
-    #elif (find_over({2, 4}, {1, 3}, sheets) == {1, 3}):
     else:
         crossing -= 1
 
     # check {2, 4} and {3, 5}
     if (find_over({2, 4}, {3, 5}, sheets) == {2, 4}):
         crossing -= 1
-    #elif (find_over({2, 4}, {3, 5}, sheets) == {3, 5}):
     else:
         crossing += 1
 
@@ -51,28 +48,24 @@ def check_crossings_case2(sheets):
     # check {0, 3} and {2, 5}
     if (find_over({0, 3}, {2, 5}, sheets) == {0, 3}):
         crossing += 1
-    #elif (find_over({0, 3}, {2, 5}, sheets) == {2, 5}):
     else:
         crossing -= 1
 
     # check {0, 3} and {2, 4}
     if (find_over({0, 3}, {2, 4}, sheets) == {0, 3}):
         crossing -= 1
-    #elif (find_over({0, 3}, {2, 4}, sheets) == {2, 4}):
     else:
         crossing += 1
 
     # check {1, 3} and {2，5}
     if (find_over({1, 3}, {2, 5}, sheets) == {1, 3}):
         crossing -= 1
-    #elif (find_over({1, 3}, {2, 5}, sheets) == {2, 5}):
     else:
         crossing += 1
 
     # check {1, 3} and {2, 4}
     if (find_over({1, 3}, {2, 4}, sheets) == {1, 3}):
         crossing += 1
-    #elif (find_over({1, 3}, {2, 4}, sheets) == {2, 4}):
     else:
         crossing -= 1
 

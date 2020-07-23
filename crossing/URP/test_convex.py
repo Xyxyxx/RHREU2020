@@ -1,3 +1,5 @@
+# code to test convex hull probabilities
+
 import math as ma
 import numpy as np
 import random as rand
@@ -10,16 +12,11 @@ def main():
 
     
     for i in range(n):
-        #print(check_convex())
         if (test_convex()):
             convex_case += 1
-            #print(convex_case)
-            #print(convex_case / n)
 
     print("#Convex / #Total number of trials =", convex_case / n)
     
-
-    #print(test_convex())
 
 def test_convex():
     S = []
@@ -27,19 +24,9 @@ def test_convex():
     for i in range(5):
         S.append( generate_coords() )
 
-    #print(len(S))
-    #print(S)
-
-    #print(S)
     P = jarvis(S)
     
-    '''
-    if (P != 5):
-        print(False)
-    else:
-        print(True)
-    '''
-
+    # check if len(P) == n to check if convex hull is n points
     if (len(P) == 4):
         return True
     
@@ -57,20 +44,12 @@ def jarvis(S):
 
     P = []
 
-    #print("S =", S)
-
     point_on_hull = S[0]
 
-    #print(point_on_hull)
 
     
     # check if point_on_hull is left most point in S
     for x in S:
-        #print(x)
-        #print(x[0])
-
-        #print("point_on_hull = ", point_on_hull)
-
         if (x[0] < point_on_hull[0]):
             point_on_hull = x
 
@@ -84,20 +63,14 @@ def jarvis(S):
             if (end_point == point_on_hull) and (v == S[1]):
                 end_point = v
             elif ( check_left(v, P[i], end_point) ):
-                #print("here")
                 end_point = v
-                #print(P)
         
         i = i + 1
         point_on_hull = end_point
-        #print(P)
         
         if (end_point == P[0]):
             # we wrapped around to the first hull
             return P
-        #if (i == 5):
-            #print("This is looping infinitely!")
-        #    return P
     
     return P
 
@@ -112,22 +85,6 @@ def check_left(x, p, end_point):
         return True
     
     return False
-    
-    '''
-    # check if height of x in between height of p and end_point
-    y_max = max(p[1], end_point[1])
-    y_min = min(p[1], end_point[1])
-
-    # now need to find x-coord of when height of line of p to end_point match up
-    t = (x[1] - p[1]) / (end_point[1] - p[1])
-
-    line_x = end_point[0] * t + (1 - t) * p[0]
-
-    if (x[1] < line_x):
-        return True
-
-    return False
-    '''
 
 
 def det(u, v):

@@ -1,3 +1,5 @@
+# this program simulates the greedy book embeddings of K_6
+
 import time
 import random
 import math
@@ -5,21 +7,13 @@ import numpy
 import operator as op
 from functools import reduce
 
-# [{2, 5}, {3, 5}, {0, 2}, {0, 4}, {1, 4}, {1, 5}, {2, 4}, {1, 3}, {0, 3}]
-
 def main():
     tic = time.perf_counter()
-    #n = trials
+    # n = trials
     n = 1_000_000
     total_sheets = 0
 
-    #k = int(input("Enter the number of vertices"))
-
-    #edges = create_edges(k)
-    #print(edges)
-
     for i in range(n):
-        #sheets = general_book_embeddings(edges, k)
         sheets = K_6()
         total_sheets += len(sheets)
         if (i % 10_000 == 0) and (i != 0):
@@ -58,9 +52,7 @@ def book_embedding(edges):
         for sheet in sheets:
             if (len(sheet) == 0):
                 # if the sheet is empty, then we can place the sheet inside
-                #print(sheet, "should be empty")
                 sheet.append(edge)
-                #print(sheet, "good placement")
             else:
                 can_place = True
                 # next check if there is an intersection in the sheet
@@ -68,17 +60,12 @@ def book_embedding(edges):
                 for e in sheet:
                     if (intersection(e, edge) == False):
                         can_place = False
-                        #print("intersection found between", edge, "and", e, "in", sheet)
                         break
                 if (can_place):
                     sheet.append(edge)
-                    #print(sheet, "good placement")
-                    #print(sheets)
                     break
         if not (can_place):
             sheets.append([edge])
-            #print(sheet)
-            #print(sheets, "appended to intersecting sheet")
     return sheets
 
 
@@ -92,7 +79,7 @@ def intersection(edge1, edge2):
 
     # this func will return
     # True if we do NOT have an intersection
-    # and False if we DO\
+    # and False if we DO
 
     if (len(edge1) == set()):
         return True
