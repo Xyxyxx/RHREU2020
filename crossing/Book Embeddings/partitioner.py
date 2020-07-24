@@ -51,4 +51,5 @@ def main():
 
     print(possible_edges)
 
-main()
+if __name__ == "__main__":
+    main()

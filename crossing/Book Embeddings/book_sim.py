@@ -142,5 +142,5 @@ def partition(a, b):
 
     return range1, range2
 
-
-main()
+if __name__ == "__main__":
+    main()
