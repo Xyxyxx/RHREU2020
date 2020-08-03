@@ -96,7 +96,6 @@ def shuffled_edges_book_embedding(edges):
         sheets.append([])
         sheets[-1].append(edge)
 
-    #randomly shuffle (Fisher Yates Shuffle) the sheets to get any permutation of edge placements
     random.shuffle(sheets)
 
     return sheets
